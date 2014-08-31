@@ -1,0 +1,63 @@
+<html>
+	<head>
+		<title>Mako.js : MakoVM in yer browser</title>
+		<style>
+			div.canv {
+				position: absolute;
+				left: 50%;
+				top: 50%;
+				margin:-240px 0 0 -320px;
+			}
+		</style>
+	</head>
+
+	<body bgcolor="black">
+		<div class="canv">
+			<canvas id="target" width="640" height="480"></canvas>
+			<center>
+				<select id="romlist" onchange="selectRom();">
+					<option>Choose A Rom...</option>
+					<option value="BitTrip.rom">(Demo) Bit Trip</option>
+					<option value="MandelbrotDemo.rom">(Demo) Mandelbrot Set</option>
+					<option value="OpenWorldDemo.rom">(Demo) Open World Scrolling</option>
+					<option value="Player.rom">(Demo) Music Player (Sound)</option>
+					<option value="RuleR.rom">(Demo) Rule R Cellular Automaton</option>
+					<option value="StressTest.rom">(Demo) Stress Test</option>
+					<option value="SwarmDemo.rom">(Demo) Swarm</option>
+					<option value="WalkDemo.rom">(Demo) Walk</option>
+					<option value="Cardboard.rom">(Game) We Love Cardboard Kombat</option>
+					<option value="Crabfall.rom">(Game) CrabFall</option>
+					<option value="Deep.rom">(Game) Deep.</option>
+					<option value="Deep8.rom">(Game) Deep8</option>
+					<option value="Five.rom">(Game) Five Hours of Power (Sound)</option>
+					<option value="Pentris.rom">(Game) Pentris</option>
+					<option value="Pong.rom">(Game) Pong</option>
+					<option value="Salad.rom">(Game) Metal Gear Salad (Sound)</option>
+					<option value="Sokoban.rom">(Game) Sokoban</option>
+					<option value="Warrior.rom">(Game) Forth Warrior</option>
+					<option value="Webscape.rom">(Game) Webscape Webigator</option>
+					<option value="Worm.rom">(Game) Worm</option>
+					<option value="Yar.rom">(Game) Yar's Revenge (Sound)</option>
+					<option value="Loko.rom">(Programming) Loko</option>
+					<option value="MakoDE.rom">(Programming) MakoDE</option>
+					<option value="MASICA.rom">(Programming) MASICA</option>
+					<option value="Aldez.rom">(Unfinished) The Legendary Armor of Aldez</option>
+					<option value="Dynamars.rom">(Unfinished) Dynamars</option>
+					<option value="Splendor.rom">(Unfinished) Splendor</option>
+				</select>
+				<button type="button" onClick="window.open('https://github.com/JohnEarnest/Mako', '_blank');">
+					MakoVM
+				</button>
+			</center>
+		</div>
+		<script src="Mako.js"></script>
+		<script>window.onload = runUrl();</script>
+		<!--
+		<script>
+			// Add the following to run a rom immediately at page load
+			// without any URL parameters or explicit selection:
+			window.onload = function() { requestRom("roms/Yar.rom"); }
+		</script>
+		-->
+	</body>
+</html>
