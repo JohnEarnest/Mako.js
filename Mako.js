@@ -332,6 +332,7 @@ function render() {
 
 function setup(buffer) {
 	shutdown();
+	document.getElementById("logo").style.display = "none";
 
 	keyQueue = [];
 	window.addEventListener("keydown" , keyDown , false);
