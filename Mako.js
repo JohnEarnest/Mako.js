@@ -344,20 +344,22 @@ function setup(buffer) {
 	p = g.createImageData(640, 480);
 
 	if (!audio) {
-		if (typeof webkitAudioContext === 'undefined') {
-			audio = new AudioContext();
-		} else {
+		if (typeof webkitAudioContext !== 'undefined') {
 			audio = new webkitAudioContext();
 		}
-		sampleMult = Math.floor(audio.sampleRate / 8000);
+		else if (typeof AudioContext !== 'undefined') {
+			audio = new AudioContext();
+		}
 	}
-
-	soundBuffer = audio.createBuffer(1, 670, audio.sampleRate);
-	soundSource = audio.createBufferSource();
-	soundSource.buffer = soundBuffer;
-	soundSource.connect(audio.destination);
-	soundSource.loop = true;
-	soundSource.start(0);
+	if (audio) {
+		sampleMult = Math.floor(audio.sampleRate / 8000);
+		soundBuffer = audio.createBuffer(1, 670, audio.sampleRate);
+		soundSource = audio.createBufferSource();
+		soundSource.buffer = soundBuffer;
+		soundSource.connect(audio.destination);
+		soundSource.loop = true;
+		soundSource.start(0);
+	}
 
 	var size = buffer.byteLength
 	var v = new DataView(buffer);
