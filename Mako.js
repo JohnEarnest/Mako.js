@@ -367,8 +367,8 @@ function setup(buffer) {
 
 function requestRom(name) {
 	var request = new XMLHttpRequest();
-	request.responseType = "arraybuffer";
 	request.open("GET", name, true);
+	request.responseType = "arraybuffer";
 	request.onload = function(e) { setup(request.response); }
 	request.send();
 }
