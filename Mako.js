@@ -344,7 +344,11 @@ function setup(buffer) {
 	p = g.createImageData(640, 480);
 
 	if (!audio) {
-		audio = new webkitAudioContext();
+		if (typeof webkitAudioContext === 'undefined') {
+			audio = new AudioContext();
+		} else {
+			audio = new webkitAudioContext();
+		}
 		sampleMult = Math.floor(audio.sampleRate / 8000);
 	}
 
