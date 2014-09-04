@@ -279,6 +279,10 @@ function keyDown(event) {
 	if (event.keyCode in keyMap) {
 		keyIn |= keyMap[event.keyCode];
 	}
+	if (event.keyCode == 8) {
+		// backspace scancode -> ascii
+		keyQueue.push(8);
+	}
 }
 
 function keyUp(event) {
@@ -289,7 +293,21 @@ function keyUp(event) {
 
 function keyPress(event) {
 	var code = event.charCode;
-	if (code == 13) { code = 10; }
+	if (code == 13) {
+		// normalize return characters:
+		code = 10;
+	}
+	else if (code == 8) {
+		// Safari will generate a charCode for backspace,
+		// but this doesn't work reliably on other browsers.
+		// I instead use the keyCode sent in keyDown().
+		return;
+	}
+	else if (code == 0) {
+		// 'special' keys may produce a keyPress event
+		// with a garbage charCode. Ignore these.
+		return;
+	}
 	keyQueue.push(code & 0xFF);
 }
 
